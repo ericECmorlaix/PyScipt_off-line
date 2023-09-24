@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>PyScript Hello World</title>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page de tests</title>
     <link rel="stylesheet" href="./pyscript.css" />
-    <script type="module" src="./pyscript.js"></script>
-    </head>
+    <script defer src="./pyscript.js"></script>
+    <link href="./bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+  <body>
+      <py-script>
+        print("Demat d'an holl")
+      </py-script>
+      <br>
+      <py-script>  
+        print("Calculons π :")
+        def calcul_pi(n):
+            pi = 2
+            for i in range(1,n):
+                pi *= 4 * i ** 2 / (4 * i ** 2 - 1)
+            return pi
 
-    <body>
-    Hello world! <br>
-    This is the current date and time, as computed by Python:
-    <py-script>
-from pyscript import display
-from datetime import datetime
-now = datetime.now()
-display(now.strftime("%m/%d/%Y, %H:%M:%S"))
+        pi = calcul_pi(100000)
+        s = "&nbsp"*6+f"π vaut approximativement {pi:.5f}"
+        print(s)
+      </py-script>
+      <br>
+      <strong><p>Aujourd'hui nous sommes le <label id='today'></label></p></strong>
+      <br>
+      <div id="toto" class="alert alert-primary"></div>
+      <py-script>
+      import datetime as dt
+      pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))      
+      pyscript.write('toto', f'Toto est dans la place !')
     </py-script>
-    </body>
+
+    <a href="repl.html">REPL</a>
+      
+
+  </body>
 </html>
