@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Page de tests</title>
-    <link rel="stylesheet" href="./pyscript.css" />
     <script defer src="./pyscript.js"></script>
-    <link href="./bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="./pyscript.css">
   </head>
   <body>
+    <py-config>
+      [[interpreters]]
+      src = "./pyodide.js"
+      name = "pyodide-0.22.1"
+      lang = "python"
+    </py-config>
+    <py-script>
+        import pyodide_js
+        print(pyodide_js.version)
+    </py-script>
+    <!--  prints '0.22.1', showing the specified Pyodide was loaded even though the release defaults to 0.23.2 -->
       <py-script>
         display("Demat d'an holl")
       </py-script>
